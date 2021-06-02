@@ -233,6 +233,8 @@ function nextSubPageAnimation(e) {
 }
 
 function prevSubPageAnimation(e) {
+  console.log(111111);
+  console.log(e.currentTarget);
   const element = e.currentTarget;
   setNextBtnText(element);
   const parent = element.closest('.transotion-wrap').querySelector('.transotion-section.current-page');

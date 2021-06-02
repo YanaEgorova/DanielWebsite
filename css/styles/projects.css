@@ -79,8 +79,14 @@
   line-height: 1.43;
 }
 .arrow-link {
-  width: 7.6rem;
-  height: 5rem;
+  width: 50%;
+  background-color: var(--sub-bg-color);
+  height: 8rem;
+  position: relative;
+}
+.btn-box--previous {
+  height: 100%;
+  max-width: 18rem;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -90,18 +96,19 @@
   font-weight: 700;
   line-height: 1.43;
   position: absolute;
-  right: 0;
-  top: 0;
+  right: 3.2rem;
+  top: 1.4rem;
   transition: all 0.3s ease-in-out;
   -webkit-transition: all 0.3s ease-in-out;
   -moz-transition: all 0.3s ease-in-out;
   -ms-transition: all 0.3s ease-in-out;
   -o-transition: all 0.3s ease-in-out;
+  color: var(--sub-text-color);
 }
 .arrow-link__icon {
   position: absolute;
-  left: 0;
-  bottom: 0;
+  left: 8.5rem;
+  top: 5rem;
   transition: all 0.3s ease-in-out;
   -webkit-transition: all 0.3s ease-in-out;
   -moz-transition: all 0.3s ease-in-out;
@@ -111,11 +118,11 @@
 }
 .arrow-link:hover .arrow-link__icon,
 .arrow-link:focus .arrow-link__icon {
-  left: -3.2rem;
+  left: 3.2rem;
 }
 .arrow-link:hover .arrow-link__span,
 .arrow-link:focus .arrow-link__span {
-  right: -3.2rem;
+  right: 0;
 }
 .project-back-link {
   /* z-index: 9;
@@ -123,7 +130,7 @@
   top: 8rem;
   left: 3.2rem; */
   position: relative;
-  margin-left: 3.2rem;
+  /* margin-left: 3.2rem; */
 }
 .project-active .project-overlay {
   overflow: auto;
@@ -213,17 +220,19 @@
   width: 6.4rem;
 }
 .view-btn {
-  /* position: absolute;
-  bottom: 0;
-  right: 0; */
   position: relative;
-  display: flex;
-  flex-direction: column;
   z-index: 999;
   border: none;
   background-color: var(--gray-color);
-  width: 16.8rem;
+  width: 50%;
   height: 8rem;
+}
+.btn-box--next {
+  width: 18rem;
+  height: 100%;
+  margin-left: auto;
+  position: relative;
+  text-align: left;
   padding-left: 3.2rem;
 }
 .wrapper.project-wrapper {
