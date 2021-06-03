@@ -84,6 +84,9 @@
   height: 8rem;
   position: relative;
 }
+.arrow-link.btn-desk {
+display: none;
+}
 .btn-box--previous {
   height: 100%;
   max-width: 18rem;
@@ -116,21 +119,18 @@
   -o-transition: all 0.3s ease-in-out;
   user-select: none;
 }
-.arrow-link:hover .arrow-link__icon,
-.arrow-link:focus .arrow-link__icon {
+.arrow-link:hover .arrow-link__icon
+/* ,.arrow-link:focus .arrow-link__icon  */
+{
   left: 3.2rem;
 }
-.arrow-link:hover .arrow-link__span,
-.arrow-link:focus .arrow-link__span {
+.arrow-link:hover .arrow-link__span
+/* ,.arrow-link:focus .arrow-link__span  */
+{
   right: 0;
 }
 .project-back-link {
-  /* z-index: 9;
-  position: absolute;
-  top: 8rem;
-  left: 3.2rem; */
   position: relative;
-  /* margin-left: 3.2rem; */
 }
 .project-active .project-overlay {
   overflow: auto;
@@ -200,6 +200,7 @@
   max-width: 128rem;
   margin: 0 auto;
   position: relative;
+  min-height: 100vh;
 }
 .project-hero__right {
   flex-grow: 1;
@@ -246,21 +247,10 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #fff;
+  background-color: transparent;
   z-index: 999;
   height: 8rem;
 }
-/* .btn-box--last {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: gray;
-  z-index: 999;
-} */
 .project-wrapper_header {
   position: fixed;
   height: 8rem;
@@ -295,12 +285,14 @@
   -o-transition: all 0.3s ease-in-out;
   user-select: none;
 }
-.next-btn:hover .next-btn__span,
-.next-btn:focus .next-btn__span {
+.next-btn:hover .next-btn__span
+/* ,.next-btn:focus .next-btn__span  */
+{
   margin-left: -3.2rem;
 }
-.next-btn:hover .next-btn__icon,
-.next-btn:focus .next-btn__icon {
+.next-btn:hover .next-btn__icon
+/* ,.next-btn:focus .next-btn__icon  */
+{
   left: 10rem;
 }
 .project-wrapper .dots {
@@ -386,7 +378,7 @@
   z-index: 1;
 }
 .pt-page-moveToLeftEasing {
-  -webkit-animation: moveToLeft 0.7s ease-in-out both;
+  -webkit-animation: moveToLeft 0.6s ease-in-out both;
   animation: moveToLeft 0.7s ease-in-out both;
 }
 @-webkit-keyframes moveToLeft {
@@ -407,7 +399,7 @@
   z-index: 999;
 }
 .pt-page-moveFromRight {
-  -webkit-animation: moveFromRight 0.6s ease both;
+  -webkit-animation: moveFromRight 0.5s ease both;
   animation: moveFromRight 0.6s ease both;
 }
 @-webkit-keyframes moveFromRight {
@@ -421,7 +413,7 @@
   }
 }
 .pt-page-moveFromLeft {
-  -webkit-animation: moveFromLeft 0.6s ease both;
+  -webkit-animation: moveFromLeft 0.5s ease both;
   animation: moveFromLeft 0.6s ease both;
 }
 @-webkit-keyframes moveFromLeft {
@@ -435,7 +427,7 @@
   }
 }
 .pt-page-moveToRightEasing {
-  -webkit-animation: moveToRight 0.7s ease-in-out both;
+  -webkit-animation: moveToRight 0.6s ease-in-out both;
   animation: moveToRight 0.7s ease-in-out both;
 }
 @-webkit-keyframes moveToRight {
@@ -508,6 +500,7 @@
   width: 100%;
   margin: 0 auto;
   position: relative;
+  min-height: 100vh;
 }
 .challenge-hero__left {
   margin: 0 auto;
@@ -769,7 +762,7 @@
     right: 9.6rem;
   }
   .project-hero {
-    padding: 17.8rem 14.2rem 20.2rem 18.8rem;
+    padding: 17.8rem 14.2rem 16.6rem 18.8rem;
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
@@ -810,9 +803,60 @@
     margin-right: 0;
   }
 }
+@media screen and (min-width: 1200px) {
+  .challenge-hero {
+    padding-bottom: 16.6rem;
+  }
+  .view-btn {
+    width: 16.8rem;
+    height: 11.4rem;
+}
+.next-btn {
+  padding-top: 3.2rem;
+  margin-left: auto;
+  margin-right: 9.6rem;
+}
+.next-btn__icon {
+  bottom: 3.2rem;
+}
+  .arrow-link {
+    display: none;
+    }
+    .arrow-link.btn-desk {
+      display: block;
+      position: absolute;
+      top: 6.4rem;
+      left: 9.6rem;
+      z-index: 99999;
+      background-color: transparent;
+        width: 7.6rem;
+      }
+      .btn-desk .arrow-link__span {
+        color: var(--main-text-color);
+        right: auto;
+    left: 0;
+    }
+    .btn-desk .arrow-link__icon {
+      left: 0;
+  }
+    .btn-box--previous {
+      max-width: auto;
+  }
+  .btn-desk:hover .arrow-link__span {
+    left: 3.2rem;
+}
+.btn-desk:hover .arrow-link__icon {
+  left: -3.2rem;
+}
+.project-wrapper .dots, .challenge-wrapper .dots {
+  bottom: 0;
+}
+.end-hero__bottom-text {
+  bottom: 2.8rem;
+}
+}
 @media screen and (min-width: 1280px) {
   .btn-box {
-    max-width: 128rem;
     left: 50%;
     transform: translate(-50%, 0);
     height: 11.4rem;
@@ -826,9 +870,7 @@
 .next-btn__icon {
   bottom: 3.2rem;
 }
-.project-wrapper .dots {
-  bottom: 11.4rem;
-}
+
   .white-back-btn {
     top: 6.4rem;
     left: 9.6rem;
@@ -853,7 +895,6 @@
     max-width: 128rem;
   }
   .challenge-wrapper .dots {
-    bottom: 11.4rem;
     left: 56.1rem;
     transform: translate(0, 0);
     -webkit-transform: translate(0, 0);
@@ -861,9 +902,7 @@
     -ms-transform: translate(0, 0);
     -o-transform: translate(0, 0);
   }
-  .end-hero__bottom-text {
-   bottom: 13rem;
-}
+  
   .result-hero {
     padding-right: 17.2rem;
     padding-left: 9.6rem;

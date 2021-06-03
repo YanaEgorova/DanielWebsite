@@ -24,7 +24,6 @@ allProjects.forEach(project => {
   project.addEventListener('click', goToTheProject);
 });
 closeHelloBtn.addEventListener('click', (e) => {
-  // console.log(11111);
   closeProject();
   const tm = setTimeout(() => {
     mainAnimateDown();
@@ -63,8 +62,14 @@ function goToTheProject(e) {
         project.classList.remove('current-project')
       }
       if (project.dataset.projectid === projectId) {
-        project.querySelector('.prev').classList.add('js-project-close-btn');
-        project.querySelector('.prev.js-project-close-btn').addEventListener('click', closeProject);
+        const btnsArray = [ ...project.querySelectorAll('.prev')];
+        btnsArray.forEach(btn => {
+          btn.classList.add('js-project-close-btn');
+        });
+        const closeBtnsArray = [ ...project.querySelectorAll('.prev.js-project-close-btn')];
+        closeBtnsArray.forEach(btn => {
+          btn.addEventListener('click', closeProject);
+        });
         project.querySelector('.transotion-section').classList.add('current-page');
         project.classList.add('current-project');
         window.addEventListener('resize', setSectionWrapHeight(projectId));
@@ -72,7 +77,6 @@ function goToTheProject(e) {
         let res =[];
         children.forEach(currentItem => {
           if(currentItem.classList.contains('transotion-section')) {
-            // console.log('currentItem: ', currentItem);
             res.push(currentItem)
           }
         });
@@ -83,8 +87,6 @@ function goToTheProject(e) {
             btn.style.display = 'none';
           });
         } else {
-          // console.log(22222);
-          // document.querySelector('.next').style.display = 'block';
           const btns = document.querySelectorAll('.next');
           btns.forEach(btn => {
             btn.style.display = 'block';
@@ -99,8 +101,7 @@ function goToTheProject(e) {
 }
 
 export function closeProject(e) {
-  // console.log('E: ', e.currentTarget);
-  if (e && e.target.classList.contains('js-project-close-btn') || !e) {
+  if (e && e.currentTarget.classList.contains('js-project-close-btn') || !e) {
   document.body.style.overflow = 'hidden';
   document.body.classList.remove('last-project-page');
   window.addEventListener('keydown', handleKeyPressAnimation);
@@ -124,13 +125,9 @@ export function closeProject(e) {
   const howLink = document.querySelector('[data-linkid="how"]');
   howLink.classList.add('nav__link--current');
 }
-  if (e && e.target.classList.contains('js-project-close-btn') || !e) {
+  if (e && e.currentTarget.classList.contains('js-project-close-btn') || !e) {
     const tm = setTimeout(() => {
       document.querySelectorAll('.transotion-wrap').forEach(parent => {
-        // console.log('PARENT: ', parent);
-        // console.log('PARENT CHILDREN: ', parent.children);
-        // console.log('PARENT CHILDREN VALUES: ', Object.values(parent.children));
-        // console.log('PARENT CHILDREN VALUES SECOND: ', Object.values(parent.children)[2]);
         Object.values(parent.children).forEach(child => {
           child.classList.remove('current-page')
         });
@@ -176,12 +173,7 @@ function setSectionWrapHeight(projectId) {
         }
       });
       const currentPage = project.querySelector('.current-page');
-      // if() {
-
-      // }
       const currentPageWrapper = currentPage.querySelector('.wrapper');
-      // console.log('currentPage: ', currentPage);
-      // console.log();
       // currentPageWrapper.style.height = `${height}px`;
       // wrapper.style.height = `${height}px`;
       // body.style.height = `${height}px`;
@@ -202,9 +194,15 @@ allPrevBtns.forEach(btn => {
 
 function nextSubPageAnimation(e) {
   const element = e.currentTarget;
-  setNextBtnText(element);
-  element.parentNode.querySelector('.prev').classList.remove('js-project-close-btn');
+  const allBtns = [ ...document.body.querySelectorAll('.prev')];
+  allBtns.forEach(btn => {
+    btn.classList.remove('js-project-close-btn');
+  });
   const parent = element.closest('.transotion-wrap').querySelector('.transotion-section.current-page');
+  if(parent.classList.contains('pt-page-moveToLeftEasing')) {
+return;
+  }
+  setNextBtnText(element);
   parent.nextElementSibling.scrollTo({
     top: 0,
     behavior: "smooth"
@@ -219,12 +217,13 @@ function nextSubPageAnimation(e) {
   nextSection.classList.add('current-page');
   if (!nextSection.nextElementSibling) {
     document.body.classList.add('last-project-page');
-  }
+  };
   const timeout = setTimeout(() => {
     parent.classList.remove('pt-page-moveToLeftEasing');
     parent.classList.remove('pt-page-ontop');
     nextSection.classList.remove('pt-page-moveFromRight');
     parent.classList.remove('current-page');
+    // document.body.classList.remove('page-transition-animate');
     const projectid = parent.closest('.project').dataset.projectid;
     setSectionWrapHeight(projectid);
     clearTimeout(timeout)
@@ -233,11 +232,12 @@ function nextSubPageAnimation(e) {
 }
 
 function prevSubPageAnimation(e) {
-  console.log(111111);
-  console.log(e.currentTarget);
   const element = e.currentTarget;
   setNextBtnText(element);
   const parent = element.closest('.transotion-wrap').querySelector('.transotion-section.current-page');
+  if(element.closest('.transotion-wrap').querySelector('.pt-page-moveToRightEasing')) {
+    return;
+  }
   parent.previousElementSibling.scrollTo({
     top: 0,
     behavior: "smooth"
@@ -268,41 +268,30 @@ if(prevSection.classList.contains('transotion-section') && !element.classList.co
   }
 }
 function setNextBtnText(element) {
-  // console.log('WE ARE HERE');
+  // console.log(6666);
   if(element && !element.classList.contains('js-project-close-btn')) {
-    // console.log('CURRENTTARGET: ', element.closest('.transotion-wrap'));
-const children = [...element.closest('.transotion-wrap').children];
-// console.log(children);
-// console.log(element);
-children.forEach(currentItem => {
+  const children = [...element.closest('.transotion-wrap').children];
+   children.forEach(currentItem => {
   if(currentItem.classList.contains('current-page') && element.classList.contains('next')) {
-    // console.log('currentItem: ',currentItem.nextElementSibling);
-    // console.log('element: ', element);
     element.querySelector('.next-btn__span').textContent = currentItem.nextElementSibling.getAttribute('data-btn');
   } else if(currentItem.classList.contains('current-page') && element.classList.contains('prev')) {
-    // console.log('currentItem: ',currentItem.previousElementSibling);
-    // console.log('element: ', element.nextElementSibling);
     element.nextElementSibling.querySelector('.next-btn__span').textContent = currentItem.previousElementSibling.getAttribute('data-btn');
   }
 });
   } else {
+    console.log(8888888);
     if(document.body.classList.contains('last-project-page')) {
-      // console.log('YES');
       return;
     }
     const nextBtns = document.querySelectorAll('button.next');
     nextBtns.forEach(btn => {
       const nextBtnParent = btn.closest('.transotion-wrap');
       const currentSection = nextBtnParent.querySelector('.current-page');
-      // console.log('HERE: ', currentSection);
       if(currentSection && currentSection.getAttribute('data-btn')) {
         btn.querySelector('.next-btn__span').textContent = currentSection.getAttribute('data-btn');
-        // console.log(currentSection.getAttribute('data-btn'));
       }
     });
-    // console.log('naxtBtn: ', naxtBtn);
-    // console.log('nextBtnParent: ', nextBtnParent);
-    // console.log('currentSection: ', currentSection);
-    // console.log('NO EVENT');
   }
+
 }
+
