@@ -119,13 +119,11 @@ display: none;
   -o-transition: all 0.3s ease-in-out;
   user-select: none;
 }
-.arrow-link:hover .arrow-link__icon
-/* ,.arrow-link:focus .arrow-link__icon  */
+.arrow-link:active .arrow-link__icon
 {
   left: 3.2rem;
 }
-.arrow-link:hover .arrow-link__span
-/* ,.arrow-link:focus .arrow-link__span  */
+.arrow-link:active .arrow-link__span
 {
   right: 0;
 }
@@ -285,13 +283,11 @@ display: none;
   -o-transition: all 0.3s ease-in-out;
   user-select: none;
 }
-.next-btn:hover .next-btn__span
-/* ,.next-btn:focus .next-btn__span  */
+.next-btn:active .next-btn__span
 {
   margin-left: -3.2rem;
 }
-.next-btn:hover .next-btn__icon
-/* ,.next-btn:focus .next-btn__icon  */
+.next-btn:active .next-btn__icon
 {
   left: 10rem;
 }
@@ -647,6 +643,22 @@ display: none;
   }
 }
 @media screen and (min-width: 900px) {
+  .arrow-link:hover .arrow-link__icon
+{
+  left: 3.2rem;
+}
+.arrow-link:hover .arrow-link__span
+{
+  right: 0;
+}
+  .next-btn:hover .next-btn__span
+{
+  margin-left: -3.2rem;
+}
+.next-btn:hover .next-btn__icon
+{
+  left: 10rem;
+}
   .challenge-hero {
     min-height: 100vh;
     padding: 17.8rem 1.6rem 24.6rem 3.2rem;
