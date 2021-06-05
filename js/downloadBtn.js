@@ -43,7 +43,7 @@ function downloadBtnAnimation(e) {
         btn.classList.remove('download-btn-hidden');
         document.body.classList.remove('animation');
         clearTimeout(secondTm);
-        cross_download("../111.jpeg", "file.jpg");
+        cross_download("../Daniel Isaiah James Resume 2021.pdf", "Daniel Isaiah James Resume 2021.pdf");
       }, 6000)
       clearTimeout(firstTm)
     }, 500);

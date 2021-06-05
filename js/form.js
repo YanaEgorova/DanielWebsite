@@ -94,7 +94,7 @@ window.onload = function () {
       // generate a five digit number for the contact_number variable
       this.contact_number.value = (Math.random() * 100000) | 0;
       // these IDs from the previous steps
-      emailjs.sendForm('service_if8n1kc', 'template_wri2ll', this).then(
+      emailjs.sendForm('service_2wvpzy9', 'template_cq5wma9', this).then(
         function () {
           document.body.classList.add('animation')
           window.removeEventListener('keydown', handleKeyPressAnimation)
