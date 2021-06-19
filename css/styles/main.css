@@ -315,6 +315,7 @@
   width: 6.4rem;
   height: 5rem;
   display: block;
+  outline: none !important;
 }
 .swiper-button-next img, .swiper-button-prev img {
 display: block;
