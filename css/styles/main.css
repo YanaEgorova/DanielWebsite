@@ -992,6 +992,10 @@ input:-webkit-autofill:active {
     color: var(--accent-color);
   }
   /* HELLO PAGE END */
+  .swiper-container-how .swiper-button-next, .swiper-container-how .swiper-button-prev, 
+  .swiper-container-www .swiper-button-next, .swiper-container-www .swiper-button-prev {
+    display: none;
+}
 }
 @media screen and (min-width: 900px) {
   /* HOME SECTION START */
